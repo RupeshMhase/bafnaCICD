@@ -28,22 +28,19 @@
 				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
-				  <configuration>
-    				<cloudHubDeployment>
-      					<uri>https://anypoint.mulesoft.com</uri>;
-      					<muleVersion>${app.runtime}</muleVersion>
-      					<username>${username}</username>
-      					<password>${password}</password>
-      					<applicationName>${cloudhub.application.name}</applicationName>
-      					<environment>${environment}</environment>
-      					<region>${region}</region>
-      					<workers>${workers}</workers>
-      					<workerType>${workerType}</workerType>
-      					<properties>
-        					<key>value</key>
-      					</properties>
-   					</cloudHubDeployment>
-  				 </configuration>
+				<configuration>
+					<cloudHubDeployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<username>RupeshMulesoft</username>
+						<password>RupeshMulesoft@2023</password>
+						<environment>Sandbox</environment>
+						<applicationName>bafnacicd</applicationName>
+						<workerType>Micro</workerType>
+						<workers>1</workers>
+						<muleVersion>4.4.0</muleVersion>
+						<objectStoreV2>true</objectStoreV2>
+					</cloudHubDeployment>
+				</configuration>
 			</plugin>
 			<plugin>
 			<groupId>org.mule.tools.maven</groupId>
