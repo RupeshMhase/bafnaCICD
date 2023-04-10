@@ -6,15 +6,9 @@
 http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
-	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="f795a313-dec9-4afe-90ae-03c69a27b98c" >
-		<http:listener-connection host="0.0.0.0" port="8041" />
-	</http:listener-config>
-	<db:config name="Database_Config" doc:name="Database Config" doc:id="5e56b745-8e60-4b69-83d1-b16e05cfac6b" >
-		<db:oracle-connection host="localhost" user="system" password="tiger" serviceName="oracle"/>
-	</db:config>
 	<flow name="cicdjobexampleFlow" doc:id="24e848d8-603a-4273-ae0e-2284633aa44c" >
-		<http:listener doc:name="HTTP:8040/cicdjobexample" doc:id="cefb2f70-735e-444a-8739-6ae0d52485ba" config-ref="HTTP_Listener_config" path="/cicdjobexample"/>
-		<set-variable value="#[attributes.queryParams.EMPID]" doc:name="EMPID" doc:id="184ff0ed-bc5b-4d25-b73e-f26007e42699" variableName="EMPID"/>
+		<http:listener doc:name="HTTP:8040/cicdjobexample/{EMPID}" doc:id="cefb2f70-735e-444a-8739-6ae0d52485ba" config-ref="HTTP_Listener_config" path="/cicdjobexample/{EMPID}"/>
+		<set-variable value="#[attributes.uriParams.EMPID]" doc:name="EMPID" doc:id="184ff0ed-bc5b-4d25-b73e-f26007e42699" variableName="EMPID"/>
 		<db:select doc:name="Select" doc:id="9eff6999-5e30-431b-ac79-2808d6d1efa8" config-ref="Database_Config">
 			<db:sql ><![CDATA[select * from employee where EMPID =:EMPID]]></db:sql>
 			<db:input-parameters ><![CDATA[#[{
